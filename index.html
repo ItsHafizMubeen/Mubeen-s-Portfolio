@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Hafiz M. Mubeen — Data Scientist & Software Developer</title>
+    <meta name="description" content="Portfolio of Hafiz M. Mubeen, a results-driven Data Science and Software Development enthusiast skilled in Python, Web Development, Automation & SEO.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #1a1a2e;
+            --card-color: #2a2a44;
+            --text-color: #e0e0e0;
+            --accent-color: #fca311;
+            --dark-text: #bdbdbd;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .topbar {
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .topbar .wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .logo:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-link {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-link.cta {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .nav-link.cta:hover {
+            transform: translateY(-2px);
+            background-color: #e6b400;
+        }
+
+        .hambtn {
+            display: none;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .hambtn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .hambtn.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hambtn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hambtn.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-color);
+                padding: 1rem 0;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            }
+            .nav.active {
+                display: flex;
+            }
+            .nav-link {
+                margin: 0.5rem 1.5rem;
+            }
+            .hambtn {
+                display: block;
+            }
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .hero {
+            padding-top: 10rem;
+            padding-bottom: 6rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .eyebrow {
+            color: var(--accent-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--dark-text);
+        }
+
+        .hero-actions {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 9999px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .btn.primary {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        .btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(252, 163, 17, 0.4);
+        }
+
+        .btn.ghost {
+            background: none;
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .btn.ghost:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            box-shadow: 0 4px 10px rgba(252, 163, 17, 0.4);
+        }
+
+        .visual-card {
+            background-color: var(--card-color);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .visual-card h4 {
+            margin-top: 0;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .tool-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .tool-grid span {
+            background-color: #4a4a6e;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .visual-caption {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+            margin-top: 1.5rem;
+        }
+
+        .section-head {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .lead {
+            font-size: 1.1rem;
+            color: var(--dark-text);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-color);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h3 {
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-top: 0;
+        }
+
+        .card p, .card li {
+            color: var(--dark-text);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .proj-card {
+            background-color: var(--card-color);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .proj-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .proj-body h3 {
+            color: var(--text-color);
+            margin-top: 0;
+        }
+
+        .meta {
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background-color: #4a4a6e;
+            color: var(--text-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .exp-card {
+            background-color: var(--card-color);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .exp-card h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+        }
+
+        .company-info {
+            color: var(--dark-text);
+            font-style: italic;
+            margin-top: -1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlights {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .highlights li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .highlights li::before {
+            content: '•';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: 900;
+        }
+        
+        .proj-cta a {
+            color: var(--accent-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .proj-cta a:hover {
+            color: var(--text-color);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #4a4a6e;
+            background-color: #2a2a44;
+            color: var(--text-color);
+            border-radius: 0.5rem;
+            transition: border-color 0.3s;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+        }
+        
+        .footer {
+            background-color: var(--card-color);
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        .f-left, .f-right {
+            display: block;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.2, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+.toolkit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.tool {
+    background-color: #38385a;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.tool i {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.tool span {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.tool:hover {
+    transform: translateY(-5px) scale(1.05);
+    background-color: #444466;
+    box-shadow: 0 8px 20px rgba(252,163,17,0.3);
+}
+
+
+
+
+/* Medium devices (tablets, ≤1024px) */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Small devices (mobiles, ≤768px) */
+@media (max-width: 768px) {
+    .hero-grid,
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .hero-sub {
+        text-align: center;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .visual-card {
+        margin-top: 2rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .exp-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Extra small devices (≤480px) */
+@media (max-width: 480px) {
+    body {
+        font-size: 0.9rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .hero-title {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .tool-grid span {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="wrap">
+            <a class="logo" href="#home">Hafiz M. Mubeen</a>
+            <nav id="nav" class="nav">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link cta">Contact</a>
+            </nav>
+            <button id="hambtn" class="hambtn" aria-label="toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main id="site">
+        <section id="home" class="hero">
+            <div class="wrap hero-grid">
+                <div class="hero-left">
+                    <p class="eyebrow">Data Scientist & Software Developer</p>
+                    <h1 class="hero-title">Crafting Data-Driven Solutions & Clean Code</h1>
+                    <p class="hero-sub">Results-driven enthusiast with proven skills in Python, MySQL, and data visualization. Adept at translating complex datasets into actionable insights and building beautiful, user-friendly interfaces.</p>
+                    <div class="hero-actions">
+                        <a class="btn primary" href="#contact">Get in Touch</a>
+                        <a class="btn ghost" href="https://www.linkedin.com/in/hafiz-mubeen-135baa279" target="_blank" rel="noopener">LinkedIn</a>
+                        <a class="btn ghost" href="https://github.com/ItsHafizMubeen" target="_blank" rel="noopener">GitHub</a>
+                    </div>
+                </div>
+                <div class="hero-right">
+                <div class="visual-card">
+    <h4>Technical Skills</h4>
+    <div class="toolkit-grid">
+        <div class="tool">
+            <i class="fab fa-python"></i>
+            <span>Python</span>
+        </div>
+        <div class="tool">
+            <i class="fas fa-database"></i>
+            <span>MySQL</span>
+        </div>
+        <div class="tool">
+            <i class="fas fa-chart-line"></i>
+            <span>Pandas</span>
+        </div>
+        <div class="tool">
+            <i class="fas fa-project-diagram"></i>
+            <span>NumPy</span>
+        </div>
+        <div class="tool">
+            <i class="fas fa-paint-brush"></i>
+            <span>Matplotlib</span>
+        </div>
+        <div class="tool">
+            <i class="fas fa-drafting-compass"></i>
+            <span>Seaborn</span>
+        </div>
+        <div class="tool">
+            <i class="fas fa-robot"></i>
+            <span>Selenium</span>
+        </div>
+        <div class="tool">
+            <i class="fab fa-js-square"></i>
+            <span>JavaScript</span>
+        </div>
+        <div class="tool">
+            <i class="fab fa-html5"></i>
+            <span>HTML5</span>
+        </div>
+        <div class="tool">
+            <i class="fab fa-css3-alt"></i>
+            <span>CSS3</span>
+        </div>
+        <div class="tool">
+            <i class="fas fa-code"></i>
+            <span>C++</span>
+        </div>
+        <div class="tool">
+            <i class="fas fa-search"></i>
+            <span>SEO</span>
+        </div>
+    </div>
+    <div class="visual-caption">
+        Passionate about solving real-world problems through intelligent automation and data-driven decision-making.
+    </div>
+</div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section about">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2 class="reveal">About Me</h2>
+                    <p class="lead reveal">A blend of technical expertise and business acumen, I thrive on transforming complex problems into elegant solutions. My background in software engineering, coupled with a passion for data science, allows me to build products that are not only functional but also intelligent.</p>
+                </div>
+                <div class="about-grid">
+                    <div class="story card reveal">
+                        <h3>My Professional Journey</h3>
+                        <p>With a strong foundation in algorithms and data structures, my journey has taken me from building console-based applications in C++ to developing sophisticated data models in Python. I specialize in web scraping, automation, and predictive analytics, always aiming to write clean, maintainable code.</p>
+                        <p>My experience in Search Engine Optimization has equipped me with the skills to not only build products but also to ensure they reach their target audience effectively, driving measurable growth.</p>
+                    </div>
+                    <div class="education card reveal">
+                        <h3>Education</h3>
+                        <h4>Bachelor of Science in Computer Science</h4>
+                        <p class="institution">University of Central Punjab, Sialkot, Pakistan</p>
+                        <p class="duration">Dec 2023 – Present</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section experience">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2 class="reveal">Professional Experience</h2>
+                </div>
+                <div class="exp-card reveal">
+                    <h3>Search Engine Optimization Specialist</h3>
+                    <p class="company-info">Cyber Web Solution, Sialkot, Pakistan · (May 2024 - Jun 2025)</p>
+                    <ul class="highlights">
+                        <li>Planned and executed comprehensive SEO campaigns (on-page, off-page, technical), significantly boosting website visibility and ranking.</li>
+                        <li>Achieved a <strong>45% increase in organic traffic</strong> and improved domain authority through strategic link-building and content optimization.</li>
+                        <li>Conducted in-depth keyword research, competitor analysis, and technical site audits to drive data-informed strategies.</li>
+                        <li>Prepared detailed performance dashboards to track progress and demonstrate ROI to stakeholders.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section projects">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2 class="reveal">Featured Projects</h2>
+                    <p class="lead reveal">Here are some of the key projects I've worked on, showcasing my skills in data science, automation, and software development.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <article class="proj-card reveal">
+                        <div class="proj-body">
+                            <div class="meta"><span class="tag">Python · Data Science</span></div>
+                            <h3>Early-Stage Diabetes Risk Prediction</h3>
+                            <p>Cleaned a healthcare dataset, applied statistical techniques, and visualized patterns using Pandas, NumPy, and Seaborn. Contributed to a research paper on predictive modeling for early diabetes detection.</p>
+                            <div class="proj-cta"><a href="https://github.com/yourusername/diabetes-prediction" target="_blank" rel="noopener">View on GitHub</a></div>
+                        </div>
+                    </article>
+
+                    <article class="proj-card reveal">
+                        <div class="proj-body">
+                            <div class="meta"><span class="tag">Python · MySQL</span></div>
+                            <h3>Hospital Management System</h3>
+                            <p>Designed a normalized relational database connected to a Python-based GUI. Implemented full CRUD operations for real-time patient, doctor, and billing management with secure data handling.</p>
+                            <div class="proj-cta"><a href="https://github.com/yourusername/hospital-management" target="_blank" rel="noopener">View on GitHub</a></div>
+                        </div>
+                    </article>
+
+                    <article class="proj-card reveal">
+                        <div class="proj-body">
+                            <div class="meta"><span class="tag">Python · Web Scraping</span></div>
+                            <h3>Esports Data Scraping & Analysis</h3>
+                            <p>Automated the scraping of esports statistics using Requests and BeautifulSoup. Processed and structured raw data with Pandas to derive insights into player and team performance.</p>
+                            <div class="proj-cta"><a href="https://github.com/yourusername/esports-scraping" target="_blank" rel="noopener">View on GitHub</a></div>
+                        </div>
+                    </article>
+
+                    <article class="proj-card reveal">
+                        <div class="proj-body">
+                            <div class="meta"><span class="tag">C++ · DSA</span></div>
+                            <h3>Online Job Portal</h3>
+                            <p>Built a console-based job portal applying advanced Data Structures and Algorithms (stack, queue, priority queue, linked list) for efficient data handling of job postings and applications.</p>
+                            <div class="proj-cta"><a href="https://github.com/yourusername/job-portal" target="_blank" rel="noopener">View on GitHub</a></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2 class="reveal">Let's Build Something Valuable</h2>
+                    <p class="lead reveal">Have a project in mind or looking for a dedicated professional to join your team? I'm open to freelance, contract, or full-time opportunities. Let's connect.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="card contact-details reveal">
+                        <h3>Contact Information</h3>
+                        <p><strong>Location:</strong> Sialkot, Pakistan</p>
+                        <p><strong>Phone:</strong> <a href="tel:+923107252505">+92 310-7252505</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:mubeen.compsci@gmail.com">mubeen.compsci@gmail.com</a></p>
+                        <p>Let's turn your data into a competitive advantage.</p>
+                    </div>
+
+                    <form class="card contact-form reveal" id="contactForm" onsubmit="return submitForm(event)">
+                        <h3>Send a Message</h3>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input id="name" name="name" type="text" required placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input id="email" name="email" type="email" required placeholder="you@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Describe your project or inquiry"></textarea>
+                        </div>
+                        <button class="btn primary" type="submit">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="wrap">
+                <div class="f-left">© <span id="yr"></span> Hafiz M. Mubeen. All rights reserved.</div>
+                <div class="f-right">Designed with passion, built for impact.</div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to handle form submission
+            window.submitForm = (e) => {
+                e.preventDefault();
+                alert('Form submission is not yet implemented. This is a static portfolio page.');
+                return false;
+            };
+
+            // Set current year in footer
+            document.getElementById('yr').textContent = new Date().getFullYear();
+
+            // Handle mobile navigation
+            const hambtn = document.getElementById('hambtn');
+            const nav = document.getElementById('nav');
+            hambtn.addEventListener('click', () => {
+                hambtn.classList.toggle('active');
+                nav.classList.toggle('active');
+            });
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hambtn.classList.remove('active');
+                    nav.classList.remove('active');
+                });
+            });
+
+            // Handle reveal on scroll
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            revealElements.forEach(el => revealObserver.observe(el));
+        });
+    </script>
+</body>
+</html>
